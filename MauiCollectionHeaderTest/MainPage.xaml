@@ -12,31 +12,32 @@
         <vm:MainViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
-        <Style x:Name="LocalLabelStyle" TargetType="Label">
+        <Style TargetType="Label">
             <Setter Property="Padding" Value="20" />
-            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontSize" Value="25" />
             <Setter Property="TextColor" Value="Black" />
         </Style>
 
-        <Style x:Name="SeparatorStyle" TargetType="BoxView">
+        <Style TargetType="BoxView">
             <Setter Property="HeightRequest" Value="1" />
             <Setter Property="BackgroundColor" Value="DarkGray" />
             <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             <Setter Property="VerticalOptions" Value="End" />
         </Style>
     </ContentPage.Resources>
-    <Grid RowDefinitions="*,60">
+    <Grid RowDefinitions="Auto, *,60">
 
-        <CollectionView ItemsSource="{Binding CollectionData}">
+        <Grid BackgroundColor="Blue">
+            <Label Text="Microsoft.Maui.Controls v9.0.30" TextColor="White" />
+        </Grid>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding CollectionData}">
             <CollectionView.Header>
                 <VerticalStackLayout>
-                    <Label
-                        IsVisible="{Binding IsHeader1Visible}"
-                        Style="{StaticResource LocalLabelStyle}"
-                        Text="{Binding HeaderField1}" />
+                    <Label IsVisible="{Binding IsHeader1Visible}" Text="{Binding HeaderField1}" />
                     <BoxView />
 
-                    <Label Style="{StaticResource LocalLabelStyle}" Text="{Binding HeaderField2}" />
+                    <Label Text="{Binding HeaderField2}" />
                     <BoxView />
 
                 </VerticalStackLayout>
@@ -46,7 +47,7 @@
                 <DataTemplate x:DataType="x:String">
                     <Grid>
 
-                        <Label Style="{StaticResource LocalLabelStyle}" Text="{Binding}" />
+                        <Label Text="{Binding}" />
 
                         <BoxView />
                     </Grid>
@@ -54,7 +55,7 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Grid x:Name="ButtonGrid" Grid.Row="1">
+        <Grid x:Name="ButtonGrid" Grid.Row="2">
             <HorizontalStackLayout>
                 <Button
                     Margin="5"
